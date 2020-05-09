@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class EmplsService {
 
-  private _url: String = "/assets/data/empl.json";
+  private _url: string = "/assets/data/empl.json";
 
   constructor( private http: HttpClient ) {  } //now we have local variable "http" to refer instance of "HttpClient"
 
