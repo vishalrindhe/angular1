@@ -15,12 +15,15 @@ export class EmpllistComponent implements OnInit {
 
   public empl=[];
 
-  constructor(private _emplservice: EmplsService) { }
+  constructor(private _emplservice: EmplsService) { } // "_emplservice" is instance
 
   ngOnInit(): void {
 
-    this.empl=this._emplservice.getempl();
-
+    this._emplservice.getempl() //instance "emplservice" used to called "getempl()" method this return observable
+      .subscribe(data =>this.empl =data); // left side "data" is argument of function and right side is bod to function
+      //we assign Iempl data(right hand side) to empl propert
+      // to receive data from return of observable we need to sunscribe to it
+      
 
   }
 

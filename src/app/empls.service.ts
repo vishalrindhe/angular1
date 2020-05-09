@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Iempl } from './empl';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmplsService {
 
-  constructor() { }
+  private _url: String = "/assets/data/empl.json";
 
-  getempl(){
+  constructor( private http: HttpClient ) {  } //now we have local variable "http" to refer instance of "HttpClient"
 
-    return[
-      { "id": 1, "name": "andrew", "age": 30},
-      { "id": 2, "name": "brad", "age": 20},
-      { "id": 3, "name": "john", "age": 40},
-      { "id": 4, "name": "debra", "age": 50}
-  
-    ];
+  getempl(): Observable<Iempl[]>{ //imported observable from RxJS
+
+    // <Iempl> is the type to get request
+    return this.http.get<Iempl[]>(this._url) ; // "_url" is the Private variable which access the data from "empl.json"
   }
 }
+ 
